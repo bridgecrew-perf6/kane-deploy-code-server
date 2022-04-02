@@ -37,6 +37,10 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # Port
 ENV PORT=8080
 
+# NodeJS
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -
+RUN sudo apt-get install -y nodejs
+
 # Use our custom entrypoint script first
 COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
